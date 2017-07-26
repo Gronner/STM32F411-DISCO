@@ -9,9 +9,9 @@ In the end a set of libraries will be present in this repository that allows the
 1. The four LEDs;
 2. the user push button;
 3. the diverse MEMS chips:
-..* L3GD20 3-axis gyroscope (SPI),
-..* LSM303DLHC 3D linear acceleration sensor and 3D digital magnetic sensor (I2C),
-..* MP45DT02 audio sensor,
+  * L3GD20 3-axis gyroscope (SPI),
+  * LSM303DLHC 3D linear acceleration sensor and 3D digital magnetic sensor (I2C),
+  * MP45DT02 audio sensor,
 4. CS43L22 audio DAC;
 5. USB OTG
 
