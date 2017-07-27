@@ -9,10 +9,13 @@
 #define __LED_H__
 
 #include <stdint.h>
+#include <stdbool.h>
 
 void led_init(void);
 void led_on(uint8_t led);
 void led_off(uint8_t led);
 void led_toggle(uint8_t led);
+bool led_get_state(uint8_t led); 
 
 #endif // __LED_H__
+
