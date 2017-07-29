@@ -1,9 +1,11 @@
-#define USE_STDPERIPH_DRIVER
-#include "stm32f4xx.h"
+
+#include "stm32f4xx_tim.h"
 #include "led.h"
+#include "timer.h"
  
 
 //Quick hack, approximately 1ms delay
+/*
 void ms_delay(int ms)
 {
    while (ms-- > 0) {
@@ -12,8 +14,7 @@ void ms_delay(int ms)
          __asm("nop");
    }
 }
-
-
+*/
 
 //Flash orange LED at about 1hz
 int main(void)
@@ -23,20 +24,16 @@ int main(void)
                                           //    per Errata 2.1.13, "Delay after an RCC peripheral clock enabling"
     // GPIOD->MODER = (1 << 28);             // set pin 13 to be general purpose output
 	led_init();	
+	timer_init();
+	timer_start();
 	uint8_t i;
 	for(i = 0; i < 4; i++)
 	{
 		led_on(i);
 	}
+	led_off(1); 
 	uint8_t j = 0;
     for (;;) {
-       ms_delay(500);
-       // GPIOD->ODR ^= (1 << 14);           // Toggle the pin 
-	   led_toggle(j);
-	   j++;
-	   if(j > 3)
-	   {
-		   j = 0;
-	   }
+		asm("nop");
     }
 }
