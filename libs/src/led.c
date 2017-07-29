@@ -1,6 +1,8 @@
 #include "bsp.h"
 #include "led.h"
 
+static uint8_t led_bitmask = 0;
+
 void led_init(void)
 {
 	// Set Pins as output
@@ -41,6 +43,7 @@ void led_on(uint8_t led)
 		return;
 	}
 	LED_PORT->ODR |= (1 << led_pin);
+	led_bitmask |= (1 << led);
 }
 
 void led_off(uint8_t led)
@@ -52,7 +55,7 @@ void led_off(uint8_t led)
 		return;
 	}
 	LED_PORT->ODR &= ~(1 << led_pin);
-
+	led_bitmask &= ~(1 << led);
 }
 
 void led_toggle(uint8_t led)
@@ -64,6 +67,7 @@ void led_toggle(uint8_t led)
 		return;
 	}
 	LED_PORT->ODR ^= (1 << led_pin);
+	led_bitmask ^= (1 << led);
 }
 
 bool led_get_state(uint8_t led)
@@ -74,14 +78,10 @@ bool led_get_state(uint8_t led)
 	{
 		return UINT8_MAX;
 	}
-
-	if(LED_PORT->ODR & (1 << led_pin))
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+	return led_bitmask & (1 << led);
 }
 
+uint8_t let_get_state_all(void)
+{
+	return led_bitmask;
+}
