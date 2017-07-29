@@ -25,7 +25,8 @@ bool led_get_state(uint8_t led);
 
 void led_on_all(void);
 void led_off_all(void);
-uint8_t  led_get_state_all(void);
+void led_toggle_all(void);
+uint8_t led_get_state_all(void);
 
 #endif // __LED_H__
 

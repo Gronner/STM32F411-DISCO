@@ -1,11 +1,8 @@
-
 #include "stm32f4xx_tim.h"
 #include "led.h"
-#include "timer.h"
  
 
 //Quick hack, approximately 1ms delay
-/*
 void ms_delay(int ms)
 {
    while (ms-- > 0) {
@@ -14,7 +11,6 @@ void ms_delay(int ms)
          __asm("nop");
    }
 }
-*/
 
 //Flash orange LED at about 1hz
 int main(void)
@@ -24,16 +20,14 @@ int main(void)
                                           //    per Errata 2.1.13, "Delay after an RCC peripheral clock enabling"
     // GPIOD->MODER = (1 << 28);             // set pin 13 to be general purpose output
 	led_init();	
-	timer_init();
-	timer_start();
-	uint8_t i;
-	for(i = 0; i < 4; i++)
-	{
-		led_on(i);
-	}
-	led_off(1); 
-	uint8_t j = 0;
+	led_on_all();
+	ms_delay(500);
+	led_off_all();
+	ms_delay(500);
+	led_on(0);
+	led_on(2);
     for (;;) {
-		asm("nop");
+		led_toggle_all();
+		ms_delay(400);
     }
 }

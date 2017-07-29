@@ -1,6 +1,8 @@
 #include "bsp.h"
 #include "led.h"
 
+#define LED_COUNT_MAX 4
+
 static uint8_t led_bitmask = 0;
 
 void led_init(void)
@@ -79,6 +81,33 @@ bool led_get_state(uint8_t led)
 		return UINT8_MAX;
 	}
 	return led_bitmask & (1 << led);
+}
+
+void led_on_all(void)
+{
+	uint8_t i = 0;
+	for(i = 0; i < LED_COUNT_MAX; i++)
+	{
+		led_on(i);
+	}
+}
+
+void led_off_all(void)
+{
+	uint8_t i = 0;
+	for(i = 0; i < LED_COUNT_MAX; i++)
+	{
+		led_off(i);
+	}
+}
+
+void led_toggle_all(void)
+{
+	uint8_t i = 0;
+	for(i = 0; i < LED_COUNT_MAX; i++)
+	{
+		led_toggle(i);
+	}
 }
 
 uint8_t let_get_state_all(void)
