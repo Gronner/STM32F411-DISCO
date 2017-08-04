@@ -1,5 +1,6 @@
 #include "stm32f4xx_tim.h"
 #include "led.h"
+#include "timer.h"
  
 
 //Quick hack, approximately 1ms delay
@@ -24,10 +25,10 @@ int main(void)
 	ms_delay(500);
 	led_off_all();
 	ms_delay(500);
-	led_on(0);
-	led_on(2);
+	timer_init();
+	timer_start();
+
     for (;;) {
-		led_toggle_all();
-		ms_delay(400);
+		ms_delay(10000);
     }
 }

@@ -9,11 +9,13 @@ static volatile TIM_TimeBaseInitTypeDef timerInitStructure;
 
 static void timer_enable_interrutpt(void)
 {
+	TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);
+
 	NVIC_InitTypeDef nvicStructure;
 	nvicStructure.NVIC_IRQChannel = TIM2_IRQn;
 	nvicStructure.NVIC_IRQChannelPreemptionPriority = 0;
 	nvicStructure.NVIC_IRQChannelSubPriority = 1;
-	nvicStructure.NVIC_IRQChannelCmd = DISABLE;
+	nvicStructure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&nvicStructure);
 }
 
@@ -35,7 +37,6 @@ void timer_start(void)
 {
 	TIM_Cmd(TIM2, ENABLE);
 	timer_enable_interrutpt();
-	TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);
 }
 
 void timer_stop(void)
@@ -71,6 +72,7 @@ bool timer_wait(uint8_t periods)
 
 void TIM2_IRQHandler()
 {
-	led_toggle(1);
+	TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
+	led_toggle(2);
 }
 
