@@ -29,6 +29,7 @@ int main(void)
 	timer_start();
 
     for (;;) {
-		ms_delay(10000);
+		timer_wait(1);
+		led_toggle(2);
     }
 }

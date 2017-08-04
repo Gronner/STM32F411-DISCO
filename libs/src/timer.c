@@ -47,12 +47,13 @@ void timer_stop(void)
 
 void timer_set_prediv(uint16_t prediv)
 {
-	timerInitStructure.TIM_Prescaler = prediv;
+	TIM_PrescalerConfig(TIM2, prediv, TIM_PSCReloadMode_Immediate);
 }
 
 void timer_set_ccrvalue(uint32_t ccrvalue)
 {
-	timerInitStructure.TIM_Period = ccrvalue;
+	TIM_SetAutoreload(TIM2, ccrvalue);
+	TIM2->EGR = TIM_PSCReloadMode_Immediate;
 }
 
 uint32_t timer_get_counter(void)
@@ -73,6 +74,6 @@ bool timer_wait(uint8_t periods)
 void TIM2_IRQHandler()
 {
 	TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
-	led_toggle(2);
+	clock_counter++;
 }
 
