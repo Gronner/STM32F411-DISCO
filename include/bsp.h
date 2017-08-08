@@ -10,6 +10,9 @@
 #define __BSP_H__
 #include <stm32f4xx_gpio.h>
 
+// Global Definitions
+#define NULL ((void *)0)
+
 // LED Definitions
 #define LED_PORT GPIOD
 
