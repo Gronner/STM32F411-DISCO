@@ -261,3 +261,8 @@ void TIM2_IRQHandler()
 	clock_counter[1]++;
 }
 
+void TIM3_IRQHandler()
+{
+	TIM_ClearITPendingBit(TIM3, TIM_IT_Update);
+	led_toggle(1);
+}

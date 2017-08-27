@@ -2,7 +2,7 @@
  * Author:		Gronner@Github
  * Date:		2017-07-28
  * Description:	Library to manage the different Timers of the STM32F411VET6
- *
+ * 		TIM1, TIM2, TIM3, TIM4, TIM5, TIM9, TIM10,TIM11
  *
  *
  */
