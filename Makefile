@@ -52,15 +52,15 @@ all: proj
 proj: $(BUILDDIR)/$(PROJ_NAME).elf
 
 clean:
-	rm -f $(BUILDDIR/*.o) $(BUILDDIR)/*.elf $(BUILDDIR)/*.hex $(BUILDDIR)/*.bin	
+	@rm -f $(BUILDDIR/*.o) $(BUILDDIR)/*.elf $(BUILDDIR)/*.hex $(BUILDDIR)/*.bin	
 
 burn: proj
-	$(STLINK)/build/Release/st-flash write $(BUILDDIR)/$(PROJ_NAME).bin 0x8000000 
+	@$(STLINK)/build/Release/st-flash write $(BUILDDIR)/$(PROJ_NAME).bin 0x8000000 
 
 $(BUILDDIR)/$(PROJ_NAME).elf: $(SRCS)
-	$(CC) $(CFLAGS) $^ -o $@
-	$(OBJCOPY) -O ihex $(BUILDDIR)/$(PROJ_NAME).elf $(BUILDDIR)/$(PROJ_NAME).hex
-	$(OBJCOPY) -O binary $(BUILDDIR)/$(PROJ_NAME).elf $(BUILDDIR)/$(PROJ_NAME).bin
+	@$(CC) $(CFLAGS) $^ -o $@
+	@$(OBJCOPY) -O ihex $(BUILDDIR)/$(PROJ_NAME).elf $(BUILDDIR)/$(PROJ_NAME).hex
+	@$(OBJCOPY) -O binary $(BUILDDIR)/$(PROJ_NAME).elf $(BUILDDIR)/$(PROJ_NAME).bin
 
 debug:
 	echo $(SRCS)
