@@ -21,5 +21,9 @@
 #define LED_RED GPIO_PinSource14
 #define LED_BLUE GPIO_PinSource15
 
-#endif // __BSP_H__
+// Button Definitions
+#define BUTTON_PORT GPIOA
 
+#define BUTTON GPIO_PinSource0
+
+#endif // __BSP_H__
