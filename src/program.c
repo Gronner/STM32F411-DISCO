@@ -6,8 +6,6 @@ void mcu_init(void)
 {
 	RCC->AHB1ENR |= RCC_AHB1ENR_GPIODEN;
 	__asm("dsb");
-	RCC->APB2ENR |= (1 << 14);
-	__asm("dsb");
 }
 
  
@@ -18,8 +16,13 @@ int main(void)
 	led_on(0);
 	button_init();
 
-
+	uint16_t temp_button_counter = 0;
     for (;;) {
+		if(button_get_counter() > temp_button_counter)
+		{
+			led_toggle(1);
+			temp_button_counter = 0;
+		}
 		__asm("nop");
     }
 }

@@ -9,6 +9,6 @@
 #define __BUTTON_H__
 
 void button_init(void);
-void button_get_counter(void);
+uint16_t button_get_counter(void);
 
 #endif // __BUTTON_H__
