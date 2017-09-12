@@ -20,7 +20,7 @@ int main(void)
     for (;;) {
 		if(button_get_counter() > temp_button_counter)
 		{
-			led_toggle(1);
+			led_toggle(2);
 			temp_button_counter = 0;
 		}
 		__asm("nop");

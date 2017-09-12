@@ -16,11 +16,11 @@ CC = arm-none-eabi-gcc
 OBJCOPY = arm-none-eabi-objcopy
 # ---- GCC Flags ----
 # Generate debug symbols, Optimize for size, 
-CFLAGS = -g -Os -Wall -Tstm32_flash.ld
+CFLAGS = -g -Os -Wall -Tstm32_flash.ld -Werror
 # Generate little-endian code, Use Thumb instruction set, set target ARM processor, allows interwork between arm and thumb instruction set
 CFLAGS += -mlittle-endian -mthumb -mcpu=cortex-m4 -mthumb-interwork
 # Use Hardware float instructions
-CFLAGS += -mfloat-abi=hard -mfpu=fpv4-sp-d16
+CFLAGS += -mfloat-abi=hard -mfpu=fpv4-sp-d16 
 # ---- Includes ----
 CFLAGS += -I $(LIBDIR)/include
 CFLAGS += -I $(HEADDIR)

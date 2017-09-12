@@ -25,5 +25,7 @@
 #define BUTTON_PORT GPIOA
 
 #define BUTTON GPIO_PinSource0
+// --> Button Timer Definitions
+#define BUTTON_TIMER TIM3
 
 #endif // __BSP_H__
