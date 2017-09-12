@@ -3,7 +3,6 @@
 #include "stm32f4xx_tim.h"
 #include "stm32f4xx_rcc.h"
 #include "misc.h"
-#include "led.h"
 #include "bsp.h"
 
 static volatile uint32_t clock_counter[8] = {0, 0, 0, 0, 0, 0, 0, 0};
