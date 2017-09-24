@@ -28,4 +28,13 @@
 // --> Button Timer Definitions
 #define BUTTON_TIMER TIM3
 
+// SPI Definitions
+// L3GD20 Gyroscope
+#define L3GD20_NSS_PORT GPIOE
+#define L3GD20_NSS GPIO_PinSource3
+#define L3GD20_SPI_PORT GPIOA
+#define L3GD20_SCK GPIO_PinSource5
+#define L3GD20_MOSI GPIO_PinSource7
+#define L3GD20_MISO GPIO_PinSource6
+
 #endif // __BSP_H__
