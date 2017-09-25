@@ -1,6 +1,6 @@
 #include "stm32f4xx_rcc.h"
 #include "led.h"
-#include "button.h"
+#include "spi.h"
 
 void mcu_init(void)
 {
@@ -14,15 +14,12 @@ int main(void)
 	mcu_init();	
 	led_init();	
 	led_on(0);
-	button_init();
-
-	uint16_t temp_button_counter = 0;
+	
+	spi_init();
+	
+	uint16_t doublebyte = 0xAAAA;
+	spi_transmit(doublebyte);
     for (;;) {
-		if(button_get_counter() > temp_button_counter)
-		{
-			led_toggle(2);
-			temp_button_counter = 0;
-		}
 		__asm("nop");
     }
 }
