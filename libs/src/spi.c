@@ -59,5 +59,5 @@ void spi_transmit(uint16_t doublebyte)
 
 void spi_receive(void)
 {
-
+	return;
 }

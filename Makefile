@@ -21,13 +21,15 @@ CFLAGS = -g -Os -Wall -Tstm32_flash.ld -Werror
 CFLAGS += -mlittle-endian -mthumb -mcpu=cortex-m4 -mthumb-interwork
 # Use Hardware float instructions
 CFLAGS += -mfloat-abi=hard -mfpu=fpv4-sp-d16 
+# Generate map file
+CFLAGS += -Xlinker -Map=$(BUILDDIR)/$(PROJ_NAME).map
 # ---- Includes ----
 CFLAGS += -I $(LIBDIR)/include
 CFLAGS += -I $(HEADDIR)
-CFLAGS += -I $(STM_COMMON)/Utilities/STM32F4-Discovery
-CFLAGS += -I $(STM_COMMON)/Libraries/CMSIS/Include
-CFLAGS += -I $(STM_COMMON)/Libraries/CMSIS/ST/STM32F4xx/Include
-CFLAGS += -I $(STM_COMMON)/Libraries/STM32F4xx_StdPeriph_Driver/inc
+CFLAGS += -isystem $(STM_COMMON)/Utilities/STM32F4-Discovery
+CFLAGS += -isystem $(STM_COMMON)/Libraries/CMSIS/Include
+CFLAGS += -isystem $(STM_COMMON)/Libraries/CMSIS/ST/STM32F4xx/Include
+CFLAGS += -isystem $(STM_COMMON)/Libraries/STM32F4xx_StdPeriph_Driver/inc
 
 # ---- Defines ----
 # Define External Clock Speed
@@ -52,7 +54,7 @@ all: proj
 proj: $(BUILDDIR)/$(PROJ_NAME).elf
 
 clean:
-	@rm -f $(BUILDDIR/*.o) $(BUILDDIR)/*.elf $(BUILDDIR)/*.hex $(BUILDDIR)/*.bin	
+	@rm -f $(BUILDDIR/*.o) $(BUILDDIR)/*.elf $(BUILDDIR)/*.hex $(BUILDDIR)/*.bin $(BUILDDIR)/*.map
 
 burn: proj
 	@$(STLINK)/build/Release/st-flash write $(BUILDDIR)/$(PROJ_NAME).bin 0x8000000 
