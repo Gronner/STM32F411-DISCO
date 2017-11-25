@@ -19,6 +19,7 @@ int main(void)
 	
 	uint16_t doublebyte = 0xAAAA;
 	spi_transmit(doublebyte);
+
     for (;;) {
 		__asm("nop");
     }
