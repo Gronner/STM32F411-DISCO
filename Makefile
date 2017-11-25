@@ -1,9 +1,9 @@
 # Project Name
 PROJ_NAME = STM32FDISCO
 # ST-Link directory
-STLINK = /home/felix/Dokumente/Programme/C/MCUs/STM32F401C_DISCO/stlink
+STLINK = ${ENV_STLINK}
 # STM32F4 library code
-STM_COMMON = /home/felix/Dokumente/Programme/C/MCUs/STM32F401C_DISCO/stm32_discovery_arm_gcc/STM32F4-Discovery_FW_V1.1.0
+STM_COMMON = ${ENV_STM_COM_DIR}
 # Directories
 SRCDIR = ./src
 ARMDIR = $(STM_COMMON)/Libraries/STM32F4xx_StdPeriph_Driver/src
