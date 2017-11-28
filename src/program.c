@@ -17,15 +17,11 @@ int main(void)
 	
 	spi_init();
 	
-    uint8_t byte;
+    uint16_t doublebyte;
     
 
-    GPIOE->BSRRH |= GPIO_Pin_3;
     for (;;) {
-        byte = 0x20;
-        spi_transmit(byte);
-        byte = 0x0F;
-        spi_transmit(byte);
+        doublebyte = 0x0F20;
+        spi_transmit(doublebyte);
     }
-    GPIOE->BSRRL |= GPIO_Pin_3;
 }
