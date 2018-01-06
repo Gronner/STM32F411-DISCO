@@ -45,12 +45,14 @@ void spi_init(void)
                              + ((uint32_t) GPIO_ALT_FUNC_SPI << (L3GD20_MOSI * 2))
                              + ((uint32_t) GPIO_ALT_FUNC_SPI << (L3GD20_MISO * 2)));
     // Configure SPI according to L3GD20 needs
-    SPI1->CR1 |= (uint16_t) (((uint16_t) 1 << 11) // 16-bit mode
+    SPI1->CR1 &= (uint16_t) ~((uint16_t) 1 << 6); // Disable SPI
+    SPI1->CR1 |= (uint16_t) (((uint16_t) 1 << 11)  // Set 16-bit mode 
                  + ((uint16_t) 1 << 9)            // Set Software NSS to High
                  + ((uint16_t) 1 << 8)            // Set Software NSS
+                 + ((uint16_t) 1 << 3)           // Set clock div to 1/4 
                  + ((uint16_t) 1 << 2)            // Master mode 
-                 + ((uint16_t) 1 << 1))           // CK to 1 when idle
-                 + ((uint16_t) 1);                // Use 2nd Clock Edge
+                 + ((uint16_t) 1 << 1)            // CK to 1 when idle
+                 + ((uint16_t) 1));               // Use 2nd Clock Edge
     SPI1->I2SCFGR &= (uint16_t) ~((uint16_t) SPI_I2SCFGR_I2SMOD);
     // SPI Enable
     SPI1->CR1 |= (uint16_t) 1 << 6;

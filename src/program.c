@@ -17,11 +17,15 @@ int main(void)
 	
 	spi_init();
 	
-    uint16_t doublebyte;
+    uint16_t doublebyte, result;
+    doublebyte = 0x000F;
     
-
-    for (;;) {
-        doublebyte = 0x0F20;
-        spi_transmit(doublebyte);
+    for (;;) 
+    {
+        result = spi_transmit(doublebyte);
+        if(result == 0b11010100)
+        {
+            led_on(1);
+        }
     }
 }

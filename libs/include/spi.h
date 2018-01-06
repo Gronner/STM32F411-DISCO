@@ -9,8 +9,8 @@
 #define __SPI_H__
 
 void spi_init(void);
-void spi_transmit(uint8_t byte);
-uint8_t spi_receive(void);
+uint16_t spi_transmit(uint16_t byte);
+uint16_t spi_receive();
 
 #endif // __SPI_H__
 
