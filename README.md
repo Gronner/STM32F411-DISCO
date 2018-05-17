@@ -1,4 +1,5 @@
 # STM32F411-DISCO
+**I'm currently focusing on my other [project](https://github.com/Gronner/Tracked_Vehicle), so this project is put on hold for an unkown time**
 
 A code repository of libraries to interact with the on-board electronics of the STM32F411E-Discovery Board by STMicroelectronics
 
